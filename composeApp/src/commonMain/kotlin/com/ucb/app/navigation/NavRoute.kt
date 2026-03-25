@@ -19,4 +19,13 @@ sealed class NavRoute {
 
     @Serializable
     object Movies: NavRoute()
+
+    @Serializable
+    object Crypto: NavRoute()
+
+    @Serializable
+    object FakeStore: NavRoute()
+
+    @Serializable
+    object CountryStore: NavRoute()
 }
