@@ -14,10 +14,6 @@ import com.ucb.app.country.presentation.composable.CountryContent
 import com.ucb.app.country.presentation.state.CountryEffect
 import com.ucb.app.country.presentation.state.CountryEvent
 import com.ucb.app.country.presentation.viewmodel.CountryViewModel
-import com.ucb.app.fakestore.presentation.composable.StoreContent
-import com.ucb.app.fakestore.presentation.state.FakeStoreEffect
-import com.ucb.app.fakestore.presentation.state.FakeStoreEvent
-import com.ucb.app.fakestore.presentation.viewmodel.FakeStoreViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 

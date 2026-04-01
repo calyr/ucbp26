@@ -6,6 +6,8 @@ import com.ucb.app.country.model.CountryModel
 import com.ucb.app.country.presentation.state.CountryEffect
 import com.ucb.app.country.presentation.state.CountryEvent
 import com.ucb.app.country.presentation.state.CountryState
+import com.ucb.app.profile.domain.model.ProfileModel
+import com.ucb.app.profile.domain.usecase.SaveProfileUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,8 +15,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.String
 
-class CountryViewModel: ViewModel() {
+class CountryViewModel(
+    val useCase : SaveProfileUseCase
+): ViewModel() {
     private val _state = MutableStateFlow(CountryState())
     val state = _state.asStateFlow()
 
@@ -32,6 +37,14 @@ class CountryViewModel: ViewModel() {
         _state.update { it.copy(isLoading = true) }
 
         viewModelScope.launch {
+            useCase.invoke(ProfileModel(
+                 id = "String" ,
+                 name = " String",
+             email = "String ",
+             cellphone= "String",
+             description= "String",
+             pathUrl= "String"
+            ))
             delay(1000)
 
             val dummyCountries = listOf(
