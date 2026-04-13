@@ -21,6 +21,8 @@ ktor = "3.1.0"
 room = "2.8.4" # Verifica la última versión estable/alpha
 ksp = "2.3.6"   # Debe ser compatible con tu versión de Kotlin (2.1.0)
 sqlite = "2.5.0-alpha13"
+googleGmsGoogleServices = "4.4.4"
+firebaseBom = "34.11.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -62,8 +64,10 @@ androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.r
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "sqlite" }
-# Optional SQLite Wrapper available in version 2.8.0 and higher
-#androidx-room-sqlite-wrapper = { module = "androidx.room:room-sqlite-wrapper", version.ref = "room" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config" }
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version = "1.10.1" }# Optional SQLite Wrapper available in version 2.8.0 and higher
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -75,3 +79,4 @@ kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", versio
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidx-room = { id = "androidx.room", version.ref = "room" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }

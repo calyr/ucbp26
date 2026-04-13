@@ -6,6 +6,7 @@ import com.ucb.app.country.model.CountryModel
 import com.ucb.app.country.presentation.state.CountryEffect
 import com.ucb.app.country.presentation.state.CountryEvent
 import com.ucb.app.country.presentation.state.CountryState
+import com.ucb.app.portfolio.data.datasource.FirebaseManager
 import com.ucb.app.profile.domain.model.ProfileModel
 import com.ucb.app.profile.domain.usecase.SaveProfileUseCase
 import kotlinx.coroutines.channels.Channel
@@ -15,11 +16,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.String
 
 class CountryViewModel(
     val useCase : SaveProfileUseCase
 ): ViewModel() {
+    private val firebaseManager = FirebaseManager()
     private val _state = MutableStateFlow(CountryState())
     val state = _state.asStateFlow()
 
@@ -35,8 +36,8 @@ class CountryViewModel(
 
     private fun loadCountries() {
         _state.update { it.copy(isLoading = true) }
-
         viewModelScope.launch {
+            firebaseManager.saveData("/currency", "BTC")
             useCase.invoke(ProfileModel(
                  id = "String" ,
                  name = " String",

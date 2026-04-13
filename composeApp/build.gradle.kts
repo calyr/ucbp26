@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.androidx.room)
+    alias(libs.plugins.google.gms.google.services)
 
 }
 
@@ -36,7 +37,11 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
-//            implementation(libs.androidx.room.sqlite.wrapper)
+
+            implementation(project.dependencies.platform(libs.firebase.bom))
+            implementation(libs.firebase.config)
+            implementation(libs.firebase.database)
+            implementation(libs.kotlinx.coroutines.play.services)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
