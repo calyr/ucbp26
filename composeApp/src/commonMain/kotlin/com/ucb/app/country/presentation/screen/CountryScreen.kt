@@ -43,7 +43,7 @@ fun CountryScreen( viewModel: CountryViewModel = koinViewModel()) {
         }
 
         state.countries.isNotEmpty() -> {
-            CountryContent(state.countries)
+            CountryContent(state.countries, state.valuedb)
         }
 
         state.error != null -> {

@@ -23,6 +23,7 @@ ksp = "2.3.6"   # Debe ser compatible con tu versión de Kotlin (2.1.0)
 sqlite = "2.5.0-alpha13"
 googleGmsGoogleServices = "4.4.4"
 firebaseBom = "34.11.0"
+firebaseMessaging = "25.0.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -67,7 +68,8 @@ sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.r
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database" }
 firebase-config = { group = "com.google.firebase", name = "firebase-config" }
-kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version = "1.10.1" }# Optional SQLite Wrapper available in version 2.8.0 and higher
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version = "1.10.1" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }# Optional SQLite Wrapper available in version 2.8.0 and higher
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

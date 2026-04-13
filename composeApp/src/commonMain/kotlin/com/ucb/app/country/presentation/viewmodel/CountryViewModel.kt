@@ -6,6 +6,7 @@ import com.ucb.app.country.model.CountryModel
 import com.ucb.app.country.presentation.state.CountryEffect
 import com.ucb.app.country.presentation.state.CountryEvent
 import com.ucb.app.country.presentation.state.CountryState
+import com.ucb.app.firebase.getToken
 import com.ucb.app.portfolio.data.datasource.FirebaseManager
 import com.ucb.app.profile.domain.model.ProfileModel
 import com.ucb.app.profile.domain.usecase.SaveProfileUseCase
@@ -27,6 +28,26 @@ class CountryViewModel(
     private val _effect = Channel<CountryEffect>()
     val effect = _effect.receiveAsFlow()
 
+    init {
+        viewModelScope.launch {
+            firebaseManager.getCurrency().collect {
+                data -> _state.update { it.copy(valuedb = data) }
+            }
+        }
+
+        viewModelScope.launch {
+            try {
+                println("VIEWMODEL DEBUG INIT")
+                val token = getToken() // Aquí recuperas el valor
+                println("VIEWMODEL DEBUG: El token recibido es: $token")
+                // Opcionalmente guárdalo en tu estado
+                // _state.update { it.copy(fcmToken = token) }
+            } catch (e: Exception) {
+                println("VIEWMODEL ERROR: Falló la obtención del token: ${e.message}")
+            }
+        }
+
+    }
     fun onEvent(event: CountryEvent) {
         when (event) {
             CountryEvent.OnLoad -> loadCountries()
