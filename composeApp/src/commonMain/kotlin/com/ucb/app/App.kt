@@ -2,21 +2,23 @@ package com.ucb.app
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
+import com.calyrsoft.designsystem.theme.DsTheme
+import com.calyrsoft.designsystem.theme.ThemeMode
 import com.ucb.app.navigation.AppNavHost
 
 
 @Composable
 @Preview
 fun App() {
+    val currentMode = ThemeMode.LIGHT
     val snackbarHostState = remember { SnackbarHostState() }
-    MaterialTheme(
-        //colorScheme = darkColorScheme()
+    DsTheme(
+        mode = currentMode
     ) {
         Scaffold(
             contentWindowInsets = WindowInsets.safeDrawing,

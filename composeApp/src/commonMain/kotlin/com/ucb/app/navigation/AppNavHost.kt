@@ -17,7 +17,7 @@ fun AppNavHost() {
     val navController = rememberNavController()
 
 
-    NavHost(navController = navController, startDestination = NavRoute.CountryStore) {
+    NavHost(navController = navController, startDestination = NavRoute.Github) {
         composable<NavRoute.Profile> {
 
         }

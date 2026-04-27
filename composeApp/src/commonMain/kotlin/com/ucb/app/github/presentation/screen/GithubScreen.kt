@@ -1,5 +1,6 @@
 package com.ucb.app.github.presentation.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,13 +11,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,8 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.calyrsoft.designsystem.components.button.PrimaryButton
+import com.calyrsoft.designsystem.components.divider.HorizontalDivider
+import com.calyrsoft.designsystem.components.input.BasicInput
+import com.calyrsoft.designsystem.theme.AppTheme
 import com.ucb.app.github.presentation.state.GithubEvent
 import com.ucb.app.github.presentation.viewmodel.GithubViewModel
 import kotlinproject.composeapp.generated.resources.Res
@@ -46,29 +45,30 @@ fun GithubScreen( viewModel: GithubViewModel = koinViewModel()) {
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.background(
+                AppTheme.colors.background
+            )
         ) {
             Text(stringResource(Res.string.github_title),
+                color = AppTheme.colors.primary,
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold)
-            OutlinedTextField(
+            BasicInput(
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                label = {
-                    Text(stringResource(Res.string.github_text_hint))
-                },
+                label = stringResource(Res.string.github_text_hint),
                 value = state.nickname, onValueChange = {
                 viewModel.onEvent(GithubEvent.OnChangeAvatar(it))
             })
-            OutlinedButton(
+            PrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
                 enabled = !state.isLoading,
                 onClick = {
                     viewModel.onEvent(GithubEvent.OnClickFind)
-                }) {
-                Text(stringResource(Res.string.github_find))
-            }
-            HorizontalDivider(modifier = Modifier.height(1.dp))
+                },
+                text = stringResource(Res.string.github_find))
+            HorizontalDivider()
 
         }
 
