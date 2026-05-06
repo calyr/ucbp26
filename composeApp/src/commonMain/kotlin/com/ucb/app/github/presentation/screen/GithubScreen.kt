@@ -84,8 +84,11 @@ fun GithubScreen( viewModel: GithubViewModel = koinViewModel()) {
                     AsyncImage(model = state.model.urlImage, contentDescription = null)
                     Text(state.model.avatar,
                         style = typography.titleMedium)
-                    Text(state.model.urlImage,
-                        style = typography.labelSmall)
+                    state.model.urlImage?.let {
+                        Text(it.value,
+                            style = typography.labelSmall)
+                    }
+
                     Text(state.model.company,
                         style = typography.bodyMedium)
                     Text(state.model.bio,

@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.google.gms.google.services)
-
+    alias(libs.plugins.mockative)
 }
 
 kotlin {
@@ -82,6 +82,7 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.turbine)
+            implementation(libs.mockative)
         }
         androidInstrumentedTest.dependencies {
             implementation(libs.ui.test.junit4)
@@ -117,6 +118,7 @@ android {
 }
 
 dependencies {
+
     add("kspAndroid", libs.androidx.room.compiler)
     add("kspIosSimulatorArm64", libs.androidx.room.compiler)
 //    add("kspIosX64", libs.androidx.room.compiler)
@@ -128,4 +130,3 @@ dependencies {
 room {
     schemaDirectory("$projectDir/schemas")
 }
-

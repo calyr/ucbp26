@@ -1,6 +1,7 @@
 package com.ucb.app.github.presentation.state
 
 import com.ucb.app.github.domain.model.GithubModel
+import com.ucb.app.github.vo.UrlImage
 
 data class GithubUiState(
     val isLoading: Boolean = false,
